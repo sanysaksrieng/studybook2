@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🇹🇷 រៀនភាសាតួកគីផ្ទាល់ - Turkish StudyBook Live</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Kantumruy Pro for Khmer & Inter for Latin -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Kantumruy Pro', 'Inter', sans-serif;
+    }
+    .perspective {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="bg-gradient-to-r from-red-600 via-red-700 to-rose-800 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl">🇹🇷</span>
+        <div>
+          <h1 class="text-lg md:text-xl font-bold tracking-tight">សៀវភៅរៀនភាសាតួកគីផ្ទាល់ (Turkish Live StudyBook)</h1>
+          <p class="text-xs text-red-100">រៀនសួរសុខទុក្ខ ណែនាំខ្លួន និងកម្ម៉ង់ម្ហូបភេសជ្ជៈ ជាមួយសំឡេងបញ្ចេញផ្ទាល់</p>
+        </div>
+      </div>
+
+      <!-- Controls: Audio Speed & Search -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center bg-red-900/40 backdrop-blur rounded-lg px-2.5 py-1 text-xs border border-red-400/30">
+          <span class="mr-1.5 opacity-90">🔊 ល្បឿនសំឡេង:</span>
+          <button id="speedSlow" onclick="setSpeed(0.75)" class="px-2 py-0.5 rounded transition hover:bg-white/20">យឺត (0.75x)</button>
+          <button id="speedNorm" onclick="setSpeed(1.0)" class="px-2 py-0.5 rounded bg-white text-red-700 font-bold shadow-sm transition">ធម្មតា (1x)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION TABS -->
+    <div class="max-w-6xl mx-auto px-4 border-t border-red-500/40">
+      <nav class="flex space-x-1 sm:space-x-4 overflow-x-auto py-2 text-sm font-medium">
+        <button onclick="switchTab('tab-greetings')" id="btn-tab-greetings" class="tab-btn px-3 py-1.5 rounded-lg bg-white text-red-700 shadow-sm whitespace-nowrap flex items-center gap-1.5">
+          <span>👋</span> មេរៀនទី ១: សួរសុខទុក្ខ & ណែនាំខ្លួន
+        </button>
+        <button onclick="switchTab('tab-food')" id="btn-tab-food" class="tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5">
+          <span>🍽️</span> មេរៀនទី ២: កម្ម៉ង់ម្ហូប & ភេសជ្ជៈ
+        </button>
+        <button onclick="switchTab('tab-dialogues')" id="btn-tab-dialogues" class="tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5">
+          <span>💬</span> កិច្ចសន្ទនាគំរូ (Dialogues)
+        </button>
+        <button onclick="switchTab('tab-flashcards')" id="btn-tab-flashcards" class="tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5">
+          <span>🎴</span> កាតពាក្យ (Flashcards)
+        </button>
+        <button onclick="switchTab('tab-quiz')" id="btn-tab-quiz" class="tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5">
+          <span>❓</span> តេស្តសាកល្បង (Quiz)
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 py-6 flex-1 w-full">
+
+    <!-- SEARCH & FILTER BAR -->
+    <div class="mb-6 bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center gap-3">
+      <div class="relative w-full">
+        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">🔍</span>
+        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ស្វែងរកពាក្យ... ឧ. Merhaba, សួស្តី, Çay, កាហ្វេ, គិតលុយ..." class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+      </div>
+      <div class="text-xs text-slate-500 whitespace-nowrap flex items-center gap-1">
+        <span>💡 ចុចលើរូប</span> <span class="bg-red-50 text-red-600 px-1.5 py-0.5 rounded border border-red-200 font-bold">🔊</span> <span>ដើម្បីស្តាប់ការបញ្ចេញសំឡេងតួកគីជាក់ស្តែង</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 1: GREETINGS & INTRODUCTIONS -->
+    <!-- ========================================== -->
+    <section id="tab-greetings" class="tab-content space-y-8">
+      
+      <!-- Pronunciation Guide Banner -->
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <h3 class="font-bold text-amber-900 text-sm flex items-center gap-2 mb-2">
+          <span>ℹ️</span> ចំណាំអក្សរពិសេសក្នុងភាសាតួកគី (Key Sounds)
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-amber-800">
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>Ç, ç</strong> = សំឡេង <strong>"ច"</strong> (ch)</div>
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>C, c</strong> = សំឡេង <strong>"ជ"</strong> (j)</div>
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>Ş, ş</strong> = សំឡេង <strong>"ឞ / ស្ស"</strong> (sh)</div>
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>Ğ, ğ</strong> = <strong>g ទន់</strong> (ពន្យារស្រៈមុខ)</div>
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>I, ı</strong> (គ្មានចុច) = សំឡេង <strong>"អ៊ឺ/ឺ"</strong></div>
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>İ, i</strong> (មានចុច) = សំឡេង <strong>"អ៊ី/ី"</strong></div>
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>Ö, ö</strong> = សំឡេង <strong>"អឺ"</strong> (មាត់មូល)</div>
+          <div class="bg-white/80 p-2 rounded border border-amber-200"><strong>Ü, ü</strong> = សំឡេង <strong>"អ៊ូ/អ៊ឺ"</strong> (មាត់មូល)</div>
+        </div>
+      </div>
+
+      <!-- Greetings Section -->
+      <div>
+        <h2 class="text-xl font-bold text-slate-800 border-b pb-2 mb-4 flex items-center justify-between">
+          <span class="flex items-center gap-2"><span>☀️</span> ការសួរសុខទុក្ខតាមពេលវេលា (Greetings)</span>
+          <span class="text-xs font-normal text-slate-500">ចុចលើប៊ូតុងដើម្បីស្តាប់សំឡេង</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="greetings-grid">
+          <!-- Dynamically populated or static items below -->
+        </div>
+      </div>
+
+      <!-- How Are You Section -->
+      <div>
+        <h2 class="text-xl font-bold text-slate-800 border-b pb-2 mb-4 flex items-center gap-2">
+          <span>🤝</span> ការសួរសុខទុក្ខ និងការឆ្លើយតប (How are you?)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="howareyou-grid"></div>
+      </div>
+
+      <!-- Introductions Section -->
+      <div>
+        <h2 class="text-xl font-bold text-slate-800 border-b pb-2 mb-4 flex items-center gap-2">
+          <span>🙋‍♂️</span> ការណែនាំខ្លួន (Introductions)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="intro-grid"></div>
+      </div>
+
+      <!-- Courtesies Section -->
+      <div>
+        <h2 class="text-xl font-bold text-slate-800 border-b pb-2 mb-4 flex items-center gap-2">
+          <span>🙏</span> ពាក្យគួរសម និងការលាគ្នា (Courtesy & Goodbyes)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="courtesy-grid"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: ORDERING FOOD & DRINKS -->
+    <!-- ========================================== -->
+    <section id="tab-food" class="tab-content hidden space-y-8">
+      
+      <!-- Restaurant Phrases Guide -->
+      <div>
+        <h2 class="text-xl font-bold text-slate-800 border-b pb-2 mb-4 flex items-center gap-2">
+          <span>🗣️</span> ឃ្លា និងទម្រង់ប្រយោគកម្ម៉ង់អាហារ (Ordering Phrases)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="phrases-grid"></div>
+      </div>
+
+      <!-- Drinks Category -->
+      <div>
+        <h2 class="text-xl font-bold text-slate-800 border-b pb-2 mb-4 flex items-center gap-2">
+          <span>☕</span> ភេសជ្ជៈពេញនិយម (Drinks - İçecekler)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="drinks-grid"></div>
+      </div>
+
+      <!-- Food Category -->
+      <div>
+        <h2 class="text-xl font-bold text-slate-800 border-b pb-2 mb-4 flex items-center gap-2">
+          <span>🍲</span> មុខម្ហូប និងបង្អែមល្បីៗ (Food - Yemekler)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="foods-grid"></div>
+      </div>
+
+      <!-- Interactive Ordering Simulator -->
+      <div class="bg-gradient-to-br from-red-50 to-orange-50 border border-red-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="font-bold text-red-900 text-lg mb-2 flex items-center gap-2">
+          <span>🛒</span> ឧបករណ៍បង្កើតប្រយោគកម្ម៉ង់រហ័ស (Interactive Order Builder)
+        </h3>
+        <p class="text-xs text-slate-600 mb-4">ជ្រើសរើសបរិមាណ និងមុខម្ហូប ដើម្បីបង្កើតប្រយោគកម្ម៉ង់ជាភាសាតួកគីដោយស្វ័យប្រវត្តិ៖</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">ចំនួន (Quantity):</label>
+            <select id="simQty" onchange="updateSimSentence()" class="w-full p-2 border border-slate-300 rounded-lg text-sm bg-white">
+              <option value="Bir">Bir (មួយ - 1)</option>
+              <option value="İki">İki (ពីរ - 2)</option>
+              <option value="Üç">Üç (បី - 3)</option>
+              <option value="Dört">Dört (បួន - 4)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">មុខម្ហូប/ភេសជ្ជៈ (Item):</label>
+            <select id="simItem" onchange="updateSimSentence()" class="w-full p-2 border border-slate-300 rounded-lg text-sm bg-white">
+              <option value="çay" data-km="តែតួកគី">çay (តែតួកគី)</option>
+              <option value="Türk kahvesi" data-km="កាហ្វេតួកគី">Türk kahvesi (កាហ្វេតួកគី)</option>
+              <option value="su" data-km="ទឹកសុទ្ធ">su (ទឹកសុទ្ធ)</option>
+              <option value="ayran" data-km="ទឹកដោះគោជូរអាយរ៉ាន">ayran (ទឹកដោះគោជូរ)</option>
+              <option value="mercimek çorbası" data-km="ស៊ុបសណ្តែកក្រហម">mercimek çorbası (ស៊ុបសណ្តែកក្រហម)</option>
+              <option value="Adana kebap" data-km="កេបាប់អ័រដាណា">Adana kebap (កេបាប់)</option>
+              <option value="porsiyon döner" data-km="ដូណឺ ១ ចាន">porsiyon döner (ដូណឺ)</option>
+              <option value="lahmacun" data-km="ភីហ្សាស្ដើងតួកគី">lahmacun (ភីហ្សាស្ដើង)</option>
+              <option value="porsiyon baklava" data-km="បង្អែមបាក់ឡាវ៉ា">porsiyon baklava (បង្អែមបាក់ឡាវ៉ា)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">ទម្រង់ប្រយោគ (Pattern):</label>
+            <select id="simPattern" onchange="updateSimSentence()" class="w-full p-2 border border-slate-300 rounded-lg text-sm bg-white">
+              <option value="alabilir miyim?">... alabilir miyim? (គួរសម - សុំ...បានទេ?)</option>
+              <option value="lütfen.">... lütfen. (សាមញ្ញ - សូមយក...)</option>
+              <option value="istiyorum.">... istiyorum. (ខ្ញុំចង់បាន...)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-red-200 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <div>
+            <div class="text-xs text-slate-500">ប្រយោគតួកគីរបស់អ្នក៖</div>
+            <div id="simResultTurkish" class="text-lg font-bold text-red-700">Bir çay alabilir miyim?</div>
+            <div id="simResultKhmer" class="text-xs text-slate-600">សុំតែតួកគីមួយបានទេ?</div>
+          </div>
+          <button onclick="speak(document.getElementById('simResultTurkish').innerText)" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-semibold flex items-center gap-2 shadow-sm transition">
+            <span>🔊</span> ស្តាប់សំឡេងភ្លាម
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: SAMPLE DIALOGUES -->
+    <!-- ========================================== -->
+    <section id="tab-dialogues" class="tab-content hidden space-y-6">
+      
+      <!-- Dialogue 1 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white p-4 flex justify-between items-center">
+          <div>
+            <h3 class="font-bold text-base flex items-center gap-2">
+              <span>🤝</span> កិច្ចសន្ទនាទី ១៖ ការជួបគ្នា និងណែនាំខ្លួនជាផ្លូវការ (Formal Meeting)
+            </h3>
+            <p class="text-xs text-slate-300">រវាង Ahmet (ជនជាតិតួកគី) និង Dara (មកពីប្រទេសកម្ពុជា)</p>
+          </div>
+          <button onclick="playFullDialogue('d1')" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold rounded-lg flex items-center gap-1 transition">
+            <span>▶️</span> ស្តាប់ការសន្ទនាទាំងមូល
+          </button>
+        </div>
+
+        <div class="p-4 space-y-3" id="dialogue-1-lines">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Dialogue 2 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-red-700 to-red-800 text-white p-4 flex justify-between items-center">
+          <div>
+            <h3 class="font-bold text-base flex items-center gap-2">
+              <span>☕</span> កិច្ចសន្ទនាទី ២៖ ការកម្ម៉ង់កាហ្វេ និងទឹកនៅហាងកាហ្វេ (At a Turkish Café)
+            </h3>
+            <p class="text-xs text-red-100">រវាង អ្នករត់តុ (Garson) និង ភ្ញៀវ</p>
+          </div>
+          <button onclick="playFullDialogue('d2')" class="px-3 py-1.5 bg-slate-900 hover:bg-black text-white text-xs font-semibold rounded-lg flex items-center gap-1 transition">
+            <span>▶️</span> ស្តាប់ការសន្ទនាទាំងមូល
+          </button>
+        </div>
+
+        <div class="p-4 space-y-3" id="dialogue-2-lines">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Dialogue 3 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-orange-700 to-amber-800 text-white p-4 flex justify-between items-center">
+          <div>
+            <h3 class="font-bold text-base flex items-center gap-2">
+              <span>🍲</span> កិច្ចសន្ទនាទី ៣៖ ការកម្ម៉ង់អាហារថ្ងៃត្រង់ និងការគិតលុយ (Dining & Paying)
+            </h3>
+            <p class="text-xs text-amber-100">ការកុម្ម៉ង់ស៊ុប កេបាប់ និងការគិតលុយតាមកាត</p>
+          </div>
+          <button onclick="playFullDialogue('d3')" class="px-3 py-1.5 bg-slate-900 hover:bg-black text-white text-xs font-semibold rounded-lg flex items-center gap-1 transition">
+            <span>▶️</span> ស្តាប់ការសន្ទនាទាំងមូល
+          </button>
+        </div>
+
+        <div class="p-4 space-y-3" id="dialogue-3-lines">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: FLASHCARDS -->
+    <!-- ========================================== -->
+    <section id="tab-flashcards" class="tab-content hidden">
+      <div class="max-w-md mx-auto text-center space-y-6">
+        <div>
+          <h2 class="text-xl font-bold text-slate-800">កាតពាក្យអនុវត្តផ្ទាល់ (Flashcards)</h2>
+          <p class="text-xs text-slate-500">ចុចលើផ្ទាំងកាតដើម្បីបកប្រែទៅមុខ ឬក្រោយ</p>
+        </div>
+
+        <!-- 3D Flipping Card -->
+        <div class="perspective w-full h-64 cursor-pointer" onclick="flipCard()">
+          <div id="flashcardInner" class="w-full h-full duration-500 transform-style-3d relative rounded-2xl shadow-md border border-slate-200">
+            
+            <!-- Front (Turkish) -->
+            <div class="absolute inset-0 w-full h-full backface-hidden bg-white rounded-2xl p-6 flex flex-col justify-between items-center border-2 border-red-500/20">
+              <span class="text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded-full" id="fcCategory">ការសួរសុខទុក្ខ</span>
+              <div class="my-auto text-center">
+                <div class="text-2xl sm:text-3xl font-bold text-slate-800 mb-2" id="fcTurkish">Merhaba</div>
+                <div class="text-sm text-red-600 font-medium" id="fcPhonetic">ម៉េរ-ហា-បា</div>
+              </div>
+              <div class="text-xs text-slate-400 flex items-center gap-1">
+                <span>🔄 ចុចដើម្បីមើលអត្ថន័យ</span>
+              </div>
+            </div>
+
+            <!-- Back (Khmer + English) -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-6 flex flex-col justify-between items-center">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-300">អត្ថន័យជាភាសាខ្មែរ</span>
+              <div class="my-auto text-center">
+                <div class="text-2xl font-bold text-amber-300 mb-2" id="fcKhmer">សួស្តី</div>
+                <div class="text-xs text-slate-300" id="fcEnglish">Hello (General greeting)</div>
+              </div>
+              <div class="text-xs text-slate-400">🔄 ចុចដើម្បីបកត្រឡប់មកវិញ</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Flashcard Controls -->
+        <div class="flex items-center justify-center gap-3">
+          <button onclick="prevCard()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded-lg text-sm font-semibold transition">
+            ⬅️ ថយក្រោយ
+          </button>
+          <button onclick="speakCurrentCard()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-semibold shadow-sm flex items-center gap-1 transition">
+            <span>🔊</span> ស្តាប់
+          </button>
+          <button onclick="nextCard()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-sm font-semibold transition">
+            បន្ទាប់ ➡️
+          </button>
+        </div>
+
+        <div class="text-xs text-slate-400">
+          កាតទី <span id="fcCurrentIndex">1</span> នៃ <span id="fcTotalCount">30</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: QUIZ -->
+    <!-- ========================================== -->
+    <section id="tab-quiz" class="tab-content hidden max-w-2xl mx-auto space-y-6">
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div class="flex justify-between items-center mb-4 pb-3 border-b">
+          <div>
+            <h2 class="text-lg font-bold text-slate-800">តេស្តវាស់កម្រិតយល់ដឹងរហ័ស (Interactive Quiz)</h2>
+            <p class="text-xs text-slate-500">ជ្រើសរើសចម្លើយដែលត្រឹមត្រូវបំផុត</p>
+          </div>
+          <div class="bg-red-50 text-red-700 px-3 py-1 rounded-lg text-sm font-bold border border-red-200">
+            ពិន្ទុ: <span id="quizScore">0</span> / <span id="quizTotalAnswered">0</span>
+          </div>
+        </div>
+
+        <!-- Question Container -->
+        <div id="quizQuestionBox" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400" id="quizQuestionNumber">សំណួរទី ១ នៃ ១០</span>
+            <button id="quizAudioBtn" onclick="speakQuizWord()" class="px-2.5 py-1 bg-red-50 hover:bg-red-100 text-red-600 rounded text-xs font-semibold flex items-center gap-1 border border-red-200">
+              <span>🔊</span> ស្តាប់សំឡេង
+            </button>
+          </div>
+
+          <div class="text-lg sm:text-xl font-bold text-slate-800" id="quizQuestionText">
+            តើពាក្យ "Günaydın" មានន័យថាយ៉ាងដូចម្តេច?
+          </div>
+
+          <div class="grid grid-cols-1 gap-2.5 pt-2" id="quizOptionsContainer">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Explanation box -->
+          <div id="quizFeedback" class="hidden p-3 rounded-lg text-sm font-medium"></div>
+
+          <div class="pt-2 flex justify-end">
+            <button id="quizNextBtn" onclick="loadNextQuestion()" class="hidden px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-semibold transition">
+              សំណួរបន្ទាប់ ➡️
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center border-t border-slate-800 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div>🇹🇷 <strong>Turkish Live StudyBook</strong> | រៀបចំសម្រាប់អ្នកសិក្សាភាសាតួកគីជាភាសាខ្មែរ</div>
+      <div>ទីតាំងឯកសារ៖ <code class="text-slate-300">d:\studybook\studybook1\index.html</code></div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC & VOCABULARY DATA -->
+  <script>
+    // --- 1. SPEECH SYNTHESIS ENGINE ---
+    let speechRate = 1.0;
+
+    function setSpeed(rate) {
+      speechRate = rate;
+      if (rate === 0.75) {
+        document.getElementById('speedSlow').className = 'px-2 py-0.5 rounded bg-white text-red-700 font-bold shadow-sm transition';
+        document.getElementById('speedNorm').className = 'px-2 py-0.5 rounded transition hover:bg-white/20';
+      } else {
+        document.getElementById('speedNorm').className = 'px-2 py-0.5 rounded bg-white text-red-700 font-bold shadow-sm transition';
+        document.getElementById('speedSlow').className = 'px-2 py-0.5 rounded transition hover:bg-white/20';
+      }
+    }
+
+    function speak(text) {
+      if (!('speechSynthesis' in window)) {
+        alert("កម្មវិធីរុករក (Browser) របស់អ្នកមិនទាន់គាំទ្រ Speech Synthesis ទេ។");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const cleanText = text.replace(/[!?,.]/g, '');
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = 'tr-TR'; // Turkish standard voice
+      utterance.rate = speechRate;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // --- 2. VOCABULARY DATA ---
+    const greetingsData = [
+      { tr: "Merhaba", kmPron: "ម៉េរ-ហា-បា", kmMean: "សួស្តី (ទូទៅ)", en: "Hello", badge: "ទូទៅ" },
+      { tr: "Selam", kmPron: "សេ-ឡាម", kmMean: "សួស្តី (មិត្តភក្តិ)", en: "Hi (Casual)", badge: "ក្រៅផ្លូវការ" },
+      { tr: "Günaydın", kmPron: "ហ្គឺន-អាយ-ដឹន", kmMean: "អរុណសួស្តី (ពេលព្រឹក)", en: "Good morning", badge: "ពេលព្រឹក" },
+      { tr: "İyi günler", kmPron: "អ៊ី-យី ហ្គឺន-លើរ", kmMean: "ទិវាសួស្តី / សូមឱ្យមានថ្ងៃល្អ", en: "Good day / Have a nice day", badge: "ពេលថ្ងៃ" },
+      { tr: "İyi akşamlar", kmPron: "អ៊ី-យី អាហ្សាំ-ឡារ", kmMean: "សាយណ្ហសួស្តី (ពេលល្ងាច)", en: "Good evening", badge: "ពេលល្ងាច" },
+      { tr: "İyi geceler", kmPron: "អ៊ី-យី ហ្គេ-ជេ-លើរ", kmMean: "រាត្រីសួស្តី (មុនចូលគេង)", en: "Good night", badge: "ពេលយប់" },
+      { tr: "Hoş geldiniz", kmPron: "ហុស ហ្គេល-ឌី-និហ្ស", kmMean: "សូមស្វាគមន៍", en: "Welcome", badge: "ស្វាគមន៍" },
+      { tr: "Hoş bulduk", kmPron: "ហុស ប៊ុល-ឌុក", kmMean: "រីករាយដែលបានមកដល់ (ឆ្លើយតប Hoş geldiniz)", en: "Response to welcome", badge: "ឆ្លើយតប" },
+    ];
+
+    const howAreYouData = [
+      { tr: "Nasılsın?", kmPron: "ណាស្ស-អ៊ិល-ស៊ិន?", kmMean: "តើអ្នកសុខសប្បាយទេ? (មិត្តភក្តិ)", en: "How are you? (Informal)", badge: "ក្រៅផ្លូវការ" },
+      { tr: "Nasılsınız?", kmPron: "ណាស្ស-អ៊ិល-ស៊ឹ-និហ្ស?", kmMean: "តើលោក/លោកស្រីសុខសប្បាយទេ?", en: "How are you? (Formal/Plural)", badge: "ផ្លូវការ" },
+      { tr: "İyiyim", kmPron: "អ៊ី-យី-យីម", kmMean: "ខ្ញុំសុខសប្បាយជាទេ", en: "I'm fine", badge: "ចម្លើយ" },
+      { tr: "Çok iyiyim", kmPron: "ឆុក អ៊ី-យី-យីម", kmMean: "ខ្ញុំសុខសប្បាយខ្លាំងណាស់", en: "I'm very good", badge: "ចម្លើយ" },
+      { tr: "Fena değil", kmPron: "ហ្វេ-ណា ដេ-យីល", kmMean: "មិនអាក្រក់ទេ / ធម្មតាៗ", en: "Not bad", badge: "ចម្លើយ" },
+      { tr: "Teşekkür ederim", kmPron: "ថេ-សេក-គឺរ អេ-ដេ-រីម", kmMean: "អរគុណច្រើន", en: "Thank you", badge: "គួរសម" },
+      { tr: "Sen nasılsın?", kmPron: "សេន ណាស្ស-អ៊ិល-ស៊ិន?", kmMean: "ចុះអ្នកវិញ?", en: "And you? (Informal)", badge: "សួរត្រឡប់" },
+      { tr: "Siz nasılsınız?", kmPron: "ស៊ីហ្ស ណាស្ស-អ៊ិល-ស៊ឹ-និហ្ស?", kmMean: "ចុះលោក/លោកស្រីវិញ?", en: "And you? (Formal)", badge: "សួរត្រឡប់" },
+    ];
+
+    const introData = [
+      { tr: "Adınız ne?", kmPron: "អា-ដឹ-និហ្ស នេ?", kmMean: "តើលោក/លោកស្រីឈ្មោះអ្វី?", en: "What is your name? (Formal)" },
+      { tr: "Adın ne?", kmPron: "អា-ដឹន នេ?", kmMean: "តើអ្នកឈ្មោះអ្វី?", en: "What is your name? (Informal)" },
+      { tr: "Benim adım Dara", kmPron: "បេ-នីម អា-ដឹម ដារ៉ា", kmMean: "ខ្ញុំឈ្មោះ ដារ៉ា", en: "My name is Dara" },
+      { tr: "Tanıştığıma memnun oldum", kmPron: "ថា-និស្-ទឹ-ម៉ា ម៉េម-នូន អូល-ឌុម", kmMean: "រីករាយណាស់ដែលបានស្គាល់អ្នក", en: "Nice to meet you" },
+      { tr: "Ben de memnun oldum", kmPron: "បេន ដេ ម៉េម-នូន អូល-ឌុម", kmMean: "ខ្ញុំក៏រីករាយដែលបានស្គាល់ដូចគ្នា", en: "Nice to meet you too" },
+      { tr: "Nerelisiniz?", kmPron: "នេ-រ៉េ-លី-ស៊ិ-និហ្ស?", kmMean: "តើលោក/អ្នកមកពីណា/ប្រទេសណា?", en: "Where are you from?" },
+      { tr: "Ben Kamboçyalıyım", kmPron: "បេន កាម-បូច-យ៉ា-លី-យីម", kmMean: "ខ្ញុំមកពីកម្ពុជា / ខ្ញុំជាជនជាតិកម្ពុជា", en: "I am Cambodian" },
+      { tr: "Kamboçya'da yaşıyorum", kmPron: "កាម-បូច-យ៉ា-ដា យ៉ា-ស្សឺ-យ័រ-រ៉ុម", kmMean: "ខ្ញុំរស់នៅប្រទេសកម្ពុជា", en: "I live in Cambodia" },
+    ];
+
+    const courtesyData = [
+      { tr: "Lütfen", kmPron: "លុត-ហ្វេន", kmMean: "សូម / មេត្តា", en: "Please" },
+      { tr: "Teşekkürler", kmPron: "ថេ-សេក-គឺរ-លើរ", kmMean: "អរគុណ", en: "Thanks" },
+      { tr: "Sağ ol", kmPron: "សា-អូល", kmMean: "អរគុណ (មិត្តភក្តិ)", en: "Thanks (Casual)" },
+      { tr: "Rica ederim", kmPron: "រី-ចា អេ-ដេ-រីម", kmMean: "មិនអីទេ / ដោយក្តីរីករាយ", en: "You're welcome" },
+      { tr: "Bir şey değil", kmPron: "បៀរ ស្សី ដេ-យីល", kmMean: "គ្មានបញ្ហាអ្វីទេ", en: "Don't mention it" },
+      { tr: "Özür dilerim", kmPron: "អឺ-ហ៊្សួរ ឌី-លេ-រីម", kmMean: "សូមអភ័យទោស / សុំទោស", en: "I'm sorry" },
+      { tr: "Afedersiniz", kmPron: "អា-ហ្វេ-ដេរ-ស៊ិ-និហ្ស", kmMean: "អធ្យាស្រ័យ / សុំទោស", en: "Excuse me" },
+      { tr: "Hoşça kal", kmPron: "ហុស-ឆា កាល់", kmMean: "លាហើយ (អ្នកចាកចេញនិយាយ)", en: "Goodbye (Speaker leaving)" },
+      { tr: "Güle güle", kmPron: "ហ្គឺ-លេ ហ្គឺ-លេ", kmMean: "លាហើយ (អ្នកនៅជូនពរ)", en: "Goodbye (Speaker staying)" },
+      { tr: "Görüşürüz", kmPron: "ហ្គឺ-រូ-ស្ស៊ូ-រូហ្ស", kmMean: "ជួបគ្នាពេលក្រោយ!", en: "See you later!" },
+    ];
+
+    const orderingPhrases = [
+      { tr: "Bakar mısınız?", kmPron: "បា-ការ មឹ-ស៊ិ-និហ្ស?", kmMean: "សុំទោសលោកអ្នកបម្រើ! (ហៅអ្នករត់តុ)", en: "Excuse me! (To waiter)" },
+      { tr: "Menüyü alabilir miyim?", kmPron: "ម៉េ-នូ-យូ អា-ឡា-ប៊ី-លីរ មី-យីម?", kmMean: "តើខ្ញុំអាចសុំមើលម៉ឺនុយបានទេ?", en: "Can I have the menu?" },
+      { tr: "Ne tavsiye edersiniz?", kmPron: "ណេ ថាវ-ស៊ី-យេ អេ-ដេ-រី-ស៊ិ-និហ្ស?", kmMean: "តើអ្នកមានមុខម្ហូបអ្វីណែនាំដែរទេ?", en: "What do you recommend?" },
+      { tr: "Bir çay alabilir miyim?", kmPron: "បៀរ ឆាយ អា-ឡា-ប៊ី-លីរ មី-យីម?", kmMean: "សុំតែមួយពែងបានទេ? (គួរសម)", en: "Can I have one tea?" },
+      { tr: "Bir su lütfen", kmPron: "បៀរ ស៊ូ លុត-ហ្វេន", kmMean: "សុំទឹកមួយដប សូមអរគុណ", en: "One water, please" },
+      { tr: "İki döner lütfen", kmPron: "អ៊ី-ឃី ដូ-ន័រ លុត-ហ្វេន", kmMean: "សុំដូណឺ ២ ចាន", en: "Two doners, please" },
+      { tr: "Hesap, lütfen", kmPron: "ហេ-ហ្សាប លុត-ហ្វេន", kmMean: "សុំគិតលុយ!", en: "The check, please" },
+      { tr: "Kartla ödeyebilir miyim?", kmPron: "ការត-ឡា អឺ-ដេ-យេ-ប៊ី-លីរ មី-យីម?", kmMean: "តើអាចទូទាត់តាមកាតបានទេ?", en: "Can I pay by card?" },
+      { tr: "Nakit ödeyeceğim", kmPron: "ណា-ឃីត អឺ-ដេ-យេ-ជេ-អ៊ីម", kmMean: "ខ្ញុំទូទាត់ជាសាច់ប្រាក់", en: "I will pay with cash" },
+      { tr: "Afiyet olsun!", kmPron: "អា-ហ្វី-យេត អូល-ស៊ុន", kmMean: "ពិសាឱ្យឆ្ងាញ់! (អ្នកបម្រើជូនពរភ្ញៀវ)", en: "Bon appétit!" },
+      { tr: "Elinize sağlık!", kmPron: "អេ-លី-នី-ហ៊្សេ សា-លឹក", kmMean: "ម្ហូបឆ្ងាញ់ណាស់! អរគុណចុងភៅ", en: "Health to your hands! (Compliment)" },
+      { tr: "Çok lezzetli", kmPron: "ឆុក ឡេហ្ស-ហ្សេត-លី", kmMean: "ឆ្ងាញ់ខ្លាំងណាស់", en: "Very delicious" },
+    ];
+
+    const drinksData = [
+      { tr: "Su", kmPron: "ស៊ូ", kmMean: "ទឹកសុទ្ធ", en: "Water" },
+      { tr: "Çay", kmPron: "ឆាយ", kmMean: "តែតួកគី (តែខ្មៅក្ដៅ)", en: "Turkish Tea" },
+      { tr: "Türk kahvesi", kmPron: "ធូក កាហ្វេ-ស៊ិ", kmMean: "កាហ្វេប្រពៃណីតួកគី", en: "Turkish Coffee" },
+      { tr: "Ayran", kmPron: "អាយ-រ៉ាន", kmMean: "ទឹកដោះគោជូរប្រៃស្រាល (ផឹកជាមួយសាច់)", en: "Salty yogurt drink" },
+      { tr: "Maden suyu", kmPron: "ម៉ា-ដេន ស៊ូ-យូ", kmMean: "ទឹកបរិសុទ្ធមានហ្គាស/សូដា", en: "Mineral water" },
+      { tr: "Portakal suyu", kmPron: "ផ័រ-ថា-កាល់ ស៊ូ-យូ", kmMean: "ទឹកក្រូចច្របាច់ស្រស់", en: "Orange juice" },
+    ];
+
+    const foodsData = [
+      { tr: "Ekmek", kmPron: "អេក-ម៉េក", kmMean: "នំបុ័ង", en: "Bread" },
+      { tr: "Mercimek çorbası", kmPron: "មែរ-ជី-មេក ឆ័រ-បា-ស៊ិ", kmMean: "ស៊ុបសណ្តែកក្រហម (ល្បីបំផុត)", en: "Lentil soup" },
+      { tr: "Kebap", kmPron: "កេ-បាប់", kmMean: "សាច់អាំងកេបាប់ (សាច់ចៀម/គោ)", en: "Kebab" },
+      { tr: "Döner", kmPron: "ដូ-ន័រ", kmMean: "សាច់ដូណឺ (សាច់អាំងបង្វិល)", en: "Doner kebab" },
+      { tr: "Köfte", kmPron: "គឺហ្វ-ថេ", kmMean: "ប្រហិតសាច់គោអាំងបែបតួកគី", en: "Meatballs" },
+      { tr: "Pide", kmPron: "ពី-ដេ", kmMean: "ភីហ្សារាងដូចទូកបែបតួកគី", en: "Turkish boat pizza" },
+      { tr: "Lahmacun", kmPron: "ឡះ-ម៉ា-ជុន", kmMean: "ភីហ្សាស្ដើងស្រួយរោយសាច់ចិញ្ច្រាំ", en: "Crispy thin pizza" },
+      { tr: "Baklava", kmPron: "បាក់-ឡា-វ៉ា", kmMean: "បង្អែមស្រទាប់នំក្រៀមទឹកឃ្មុំ", en: "Baklava pastry" },
+      { tr: "Hesap", kmPron: "ហេ-ហ្សាប", kmMean: "វិក្កយបត្រ / គិតលុយ", en: "Bill / Check" },
+    ];
+
+    // --- 3. DIALOGUES DATA ---
+    const dialogue1 = [
+      { speaker: "Ahmet", role: "តួកគី", text: "Merhaba!", km: "សួស្តី!", pron: "ម៉េរ-ហា-បា!" },
+      { speaker: "Dara", role: "កម្ពុជា", text: "Merhaba!", km: "សួស្តី!", pron: "ម៉េរ-ហា-បា!" },
+      { speaker: "Ahmet", role: "តួកគី", text: "Benim adım Ahmet. Sizin adınız ne?", km: "ខ្ញុំឈ្មោះ អាហ៍ម៉េត។ ចុះលោកឈ្មោះអ្វីដែរ?", pron: "បេ-នីម អា-ដឹម អាហ៍-ម៉េត។ ស៊ី-ហ៊្សិន អា-ដឹ-និហ្ស នេ?" },
+      { speaker: "Dara", role: "កម្ពុជា", text: "Benim adım Dara. Tanıştığıma memnun oldum.", km: "ខ្ញុំឈ្មោះ ដារ៉ា។ រីករាយណាស់ដែលបានស្គាល់លោក។", pron: "បេ-នីម អា-ដឹម ដារ៉ា។ ថា-និស្-ទឹ-ម៉ា ម៉េម-នូន អូល-ឌុម។" },
+      { speaker: "Ahmet", role: "តួកគី", text: "Ben de memnun oldum. Nasılsınız?", km: "ខ្ញុំក៏រីករាយដូចគ្នា។ តើលោកសុខសប្បាយទេ?", pron: "បេន ដេ ម៉េម-នូន អូល-ឌុម។ ណាស្ស-អ៊ិល-ស៊ឹ-និហ្ស?" },
+      { speaker: "Dara", role: "កម្ពុជា", text: "İyiyim, teşekkür ederim. Siz nasılsınız?", km: "ខ្ញុំសុខសប្បាយទេ អរគុណ។ ចុះលោកវិញសុខសប្បាយទេ?", pron: "អ៊ី-យី-យីម, ថេ-សេក-គឺរ អេ-ដេ-រីម។ ស៊ីហ្ស ណាស្ស-អ៊ិល-ស៊ឹ-និហ្ស?" },
+      { speaker: "Ahmet", role: "តួកគី", text: "Ben de iyiyim. Nerelisiniz?", km: "ខ្ញុំក៏សុខសប្បាយដែរ។ តើលោកមកពីណាដែរ?", pron: "បេន ដេ អ៊ី-យី-យីម។ នេ-រ៉េ-លី-ស៊ិ-និហ្ស?" },
+      { speaker: "Dara", role: "កម្ពុជា", text: "Ben Kamboçyalıyım.", km: "ខ្ញុំជាជនជាតិកម្ពុជា។", pron: "បេន កាម-បូច-យ៉ា-លី-យីម។" },
+    ];
+
+    const dialogue2 = [
+      { speaker: "Garson", role: "អ្នករត់តុ", text: "Hoş geldiniz! Ne arzu edersiniz?", km: "សូមស្វាគមន៍! តើលោកចង់ពិសាអ្វីដែរ?", pron: "ហុស ហ្គេល-ឌី-និហ្ស! ណេ អារ-ហ៊្សូ អេ-ដេរស៊ីនិហ្ស?" },
+      { speaker: "ភ្ញៀវ", role: "អតិថិជន", text: "Hoş bulduk. Bir Türk kahvesi alabilir miyim?", km: "អរគុណ។ តើខ្ញុំអាចសុំកាហ្វេតួកគីមួយពែងបានទេ?", pron: "ហុស ប៊ុល-ឌុក។ បៀរ ធូក កាហ្វេ-ស៊ិ អា-ឡា-ប៊ី-លីរ មី-យីម?" },
+      { speaker: "Garson", role: "អ្នករត់តុ", text: "Nasıl olsun? Sade mi, orta mı, şekerli mi?", km: "តើលោកចង់បានកម្រិតណា? ឥតស្ករ ស្ករមធ្យម ឬផ្អែម?", pron: "ណាស្ស-អ៊ិល អូល-ស៊ុន? សា-ដេ មី, អ័រ-ថា មី, ស្សេ-កែរ-លី មី?" },
+      { speaker: "ភ្ញៀវ", role: "អតិថិជន", text: "Orta lütfen. Bir de su rica edeyim.", km: "ស្ករមធ្យមបាទ។ ហើយសុំទឹកមួយកែវផង។", pron: "អ័រ-ថា លុត-ហ្វេន។ បៀរ ដេ ស៊ូ រី-ចា អេ-ដេ-យីម។" },
+      { speaker: "Garson", role: "អ្នករត់តុ", text: "Tabii ki, hemen getiriyorum.", km: "ប្រាកដណាស់ ខ្ញុំនឹងយកមកជូនភ្លាម!", pron: "ថា-ប៊ី ឃី, ហេ-មេន ហ្គេ-ធី-រី-យ៉ូ-រ៉ុម។" },
+    ];
+
+    const dialogue3 = [
+      { speaker: "ភ្ញៀវ", role: "អតិថិជន", text: "Bakar mısınız?", km: "សុំទោសលោកអ្នកបម្រើ!", pron: "បា-ការ មឹ-ស៊ិ-និហ្ស?" },
+      { speaker: "Garson", role: "អ្នករត់តុ", text: "Buyurun efendim?", km: "បាទលោក មានការអ្វីឱ្យខ្ញុំបម្រើ?", pron: "ប៊ូ-យូ-រ៉ុន អេ-ហ្វេន-ឌីម?" },
+      { speaker: "ភ្ញៀវ", role: "អតិថិជន", text: "Bir mercimek çorbası ve bir döner lütfen.", km: "សុំស៊ុបសណ្តែកក្រហម ១ និងដូណឺ ១ ចាន។", pron: "បៀរ មែរ-ជី-មេក ឆ័រ-បា-ស៊ិ វេ បៀរ ដូ-ន័រ លុត-ហ្វេន។" },
+      { speaker: "ភ្ញៀវ", role: "អតិថិជន", text: "Hesap, lütfen. Kartla ödeyebilir miyim?", km: "សុំគិតលុយ។ តើខ្ញុំអាចទូទាត់តាមកាតបានទេ?", pron: "ហេ-ហ្សាប លុត-ហ្វេន។ ការត-ឡា អឺ-ដេ-យេ-ប៊ី-លីរ មី-យីម?" },
+      { speaker: "Garson", role: "អ្នករត់តុ", text: "Tabii ki. Afiyet olsun!", km: "បានបាទ។ ពិសាឱ្យឆ្ងាញ់ និងសូមអរគុណ!", pron: "ថា-ប៊ី ឃី។ អា-ហ្វី-យេត អូល-ស៊ុន!" },
+      { speaker: "ភ្ញៀវ", role: "អតិថិជន", text: "Elinize sağlık, çok lezzetliydi!", km: "អរគុណណាស់ ម្ហូបពិតជាឆ្ងាញ់ខ្លាំងណាស់!", pron: "អេ-លី-នី-ហ៊្សេ សា-លឹក, ឆុក ឡេហ្ស-ហ្សេត-លី-ឌី!" },
+    ];
+
+    // --- 4. RENDER VOCABULARY CARDS ---
+    function createCardHTML(item) {
+      return `
+        <div class="vocab-card bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:border-red-400 hover:shadow transition flex justify-between items-start gap-2">
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-base font-bold text-slate-800 tracking-wide">${item.tr}</span>
+              ${item.badge ? `<span class="text-[10px] bg-red-50 text-red-600 px-1.5 py-0.5 rounded font-medium">${item.badge}</span>` : ''}
+            </div>
+            <div class="text-xs text-red-600 font-medium mb-1">អានថា: ${item.kmPron}</div>
+            <div class="text-sm text-slate-700 font-medium">${item.kmMean}</div>
+            <div class="text-xs text-slate-400 mt-0.5">${item.en}</div>
+          </div>
+          <button onclick="speak('${item.tr}')" class="p-2 text-red-600 hover:text-white hover:bg-red-600 rounded-lg bg-red-50 transition border border-red-200" title="ស្តាប់សំឡេង">
+            🔊
+          </button>
+        </div>
+      `;
+    }
+
+    function renderAllGrids() {
+      document.getElementById('greetings-grid').innerHTML = greetingsData.map(createCardHTML).join('');
+      document.getElementById('howareyou-grid').innerHTML = howAreYouData.map(createCardHTML).join('');
+      document.getElementById('intro-grid').innerHTML = introData.map(createCardHTML).join('');
+      document.getElementById('courtesy-grid').innerHTML = courtesyData.map(createCardHTML).join('');
+      document.getElementById('phrases-grid').innerHTML = orderingPhrases.map(createCardHTML).join('');
+      document.getElementById('drinks-grid').innerHTML = drinksData.map(createCardHTML).join('');
+      document.getElementById('foods-grid').innerHTML = foodsData.map(createCardHTML).join('');
+
+      renderDialogueLines('dialogue-1-lines', dialogue1);
+      renderDialogueLines('dialogue-2-lines', dialogue2);
+      renderDialogueLines('dialogue-3-lines', dialogue3);
+    }
+
+    function renderDialogueLines(containerId, lines) {
+      const el = document.getElementById(containerId);
+      el.innerHTML = lines.map((l, idx) => `
+        <div class="p-3 rounded-xl border border-slate-100 ${idx % 2 === 0 ? 'bg-slate-50' : 'bg-red-50/40'} flex justify-between items-start gap-3">
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold text-slate-600 px-2 py-0.5 bg-white rounded border border-slate-200">${l.speaker} (${l.role})</span>
+              <span class="text-sm font-bold text-slate-900">${l.text}</span>
+            </div>
+            <div class="text-xs text-red-600 mb-0.5">${l.pron}</div>
+            <div class="text-xs text-slate-700">${l.km}</div>
+          </div>
+          <button onclick="speak('${l.text}')" class="text-sm p-1.5 bg-white hover:bg-red-600 hover:text-white rounded border border-slate-200 text-red-600 transition shadow-xs" title="ស្តាប់">
+            🔊
+          </button>
+        </div>
+      `).join('');
+    }
+
+    async function playFullDialogue(dId) {
+      let lines = dId === 'd1' ? dialogue1 : (dId === 'd2' ? dialogue2 : dialogue3);
+      for (const line of lines) {
+        speak(line.text);
+        await new Promise(r => setTimeout(r, 2200));
+      }
+    }
+
+    // --- 5. INTERACTIVE ORDER SIMULATOR ---
+    function updateSimSentence() {
+      const qty = document.getElementById('simQty').value;
+      const itemSelect = document.getElementById('simItem');
+      const itemVal = itemSelect.value;
+      const itemKm = itemSelect.options[itemSelect.selectedIndex].getAttribute('data-km');
+      const pattern = document.getElementById('simPattern').value;
+
+      let sentenceTr = `${qty} ${itemVal} ${pattern}`;
+      let sentenceKm = "";
+
+      if (pattern.includes('alabilir miyim')) {
+        sentenceKm = `តើខ្ញុំអាចសុំ ${itemKm} ${qty} បានទេ?`;
+      } else if (pattern.includes('lütfen')) {
+        sentenceKm = `សូមយក ${itemKm} ${qty}។`;
+      } else {
+        sentenceKm = `ខ្ញុំចង់បាន ${itemKm} ${qty}។`;
+      }
+
+      document.getElementById('simResultTurkish').innerText = sentenceTr;
+      document.getElementById('simResultKhmer').innerText = sentenceKm;
+    }
+
+    // --- 6. TAB SWITCHING ---
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.className = 'tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5';
+      });
+
+      const activeBtn = document.getElementById(`btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.className = 'tab-btn px-3 py-1.5 rounded-lg bg-white text-red-700 shadow-sm whitespace-nowrap flex items-center gap-1.5';
+      }
+
+      if (tabId === 'tab-flashcards') {
+        showCurrentFlashcard();
+      } else if (tabId === 'tab-quiz') {
+        initQuiz();
+      }
+    }
+
+    // --- 7. SEARCH & FILTER ---
+    function handleSearch() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.vocab-card');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // --- 8. FLASHCARD LOGIC ---
+    const allFlashcards = [
+      ...greetingsData.map(d => ({ ...d, cat: "ការសួរសុខទុក្ខ" })),
+      ...howAreYouData.map(d => ({ ...d, cat: "សួរសុខទុក្ខ" })),
+      ...introData.map(d => ({ ...d, cat: "ណែនាំខ្លួន" })),
+      ...drinksData.map(d => ({ ...d, cat: "ភេសជ្ជៈ" })),
+      ...foodsData.map(d => ({ ...d, cat: "ម្ហូបអាហារ" })),
+      ...orderingPhrases.slice(0, 6).map(d => ({ ...d, cat: "កម្ម៉ង់ម្ហូប" }))
+    ];
+
+    let fcIndex = 0;
+    let isFlipped = false;
+
+    function showCurrentFlashcard() {
+      const card = allFlashcards[fcIndex];
+      isFlipped = false;
+      document.getElementById('flashcardInner').classList.remove('rotate-y-180');
+      document.getElementById('fcCategory').innerText = card.cat;
+      document.getElementById('fcTurkish').innerText = card.tr;
+      document.getElementById('fcPhonetic').innerText = card.kmPron;
+      document.getElementById('fcKhmer').innerText = card.kmMean;
+      document.getElementById('fcEnglish').innerText = card.en;
+      document.getElementById('fcCurrentIndex').innerText = fcIndex + 1;
+      document.getElementById('fcTotalCount').innerText = allFlashcards.length;
+    }
+
+    function flipCard() {
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        document.getElementById('flashcardInner').classList.add('rotate-y-180');
+      } else {
+        document.getElementById('flashcardInner').classList.remove('rotate-y-180');
+      }
+    }
+
+    function nextCard() {
+      fcIndex = (fcIndex + 1) % allFlashcards.length;
+      showCurrentFlashcard();
+    }
+
+    function prevCard() {
+      fcIndex = (fcIndex - 1 + allFlashcards.length) % allFlashcards.length;
+      showCurrentFlashcard();
+    }
+
+    function speakCurrentCard() {
+      speak(allFlashcards[fcIndex].tr);
+    }
+
+    // --- 9. QUIZ ENGINE ---
+    const quizPool = [
+      { q: "តើពាក្យ \"Günaydın\" មានន័យដូចម្តេច?", trWord: "Günaydın", options: ["អរុណសួស្តី (ពេលព្រឹក)", "រាត្រីសួស្តី", "សួស្តីពេលល្ងាច", "លាហើយ"], answer: 0, exp: "Günaydın = អរុណសួស្តី (Good morning)" },
+      { q: "តើពាក្យណាមានន័យថា \"សូមអរគុណ\" ក្នុងភាសាតួកគី?", trWord: "Teşekkür ederim", options: ["Lütfen", "Teşekkür ederim", "Afedersiniz", "Merhaba"], answer: 1, exp: "Teşekkür ederim = អរគុណច្រើន" },
+      { q: "តើឃ្លា \"Hesap, lütfen\" ប្រើក្នុងកាលៈទេសៈណា?", trWord: "Hesap, lütfen", options: ["សុំមើលម៉ឺនុយ", "សុំទោស", "សុំគិតលុយនៅហាង", "សួរសុខទុក្ខ"], answer: 2, exp: "Hesap, lütfen = សុំគិតលុយ (The bill, please)" },
+      { q: "តើ \"Çay\" មានន័យថាអ្វី?", trWord: "Çay", options: ["កាហ្វេ", "តែតួកគី", "ទឹកសុទ្ធ", "ទឹកដោះគោ"], answer: 1, exp: "Çay = តែតួកគី (Turkish tea)" },
+      { q: "ពេលអ្នកចាកចេញពីកន្លែងណាមួយ តើអ្នកត្រូវនិយាយពាក្យអ្វីដើម្បីលា?", trWord: "Hoşça kal", options: ["Hoşça kal", "Hoş geldiniz", "Nasılsın", "İyiyim"], answer: 0, exp: "Hoşça kal = លាហើយ (អ្នកចាកចេញជាអ្នកនិយាយ)" },
+      { q: "តើពាក្យ \"Elinize sağlık!\" ប្រើដើម្បីអ្វី?", trWord: "Elinize sağlık", options: ["សុំទោសពេលធ្វើខុស", "សរសើរចុងភៅ/អ្នកធ្វើម្ហូបថាឆ្ងាញ់", "សុំទឹកមួយកែវ", "ជម្រាបសួរ"], answer: 1, exp: "Elinize sağlık មានន័យត្រង់ថា 'សូមឱ្យដៃរបស់អ្នកមានសុខភាពល្អ' ប្រើសម្រាប់សរសើរម្ហូបឆ្ងាញ់" },
+      { q: "តើប្រយោគ \"Bir su alabilir miyim?\" មានន័យថាដូចម្តេច?", trWord: "Bir su alabilir miyim?", options: ["សុំទឹកមួយដបបានទេ?", "សុំកាហ្វេមួយពែងបានទេ?", "តើមានទឹកទេ?", "ទឹកនេះថ្លៃប៉ុន្មាន?"], answer: 0, exp: "Bir su alabilir miyim? = សុំទឹកមួយដបបានទេ?" },
+      { q: "តើពាក្យ \"Kamboçyalıyım\" មានន័យដូចម្តេច?", trWord: "Kamboçyalıyım", options: ["ខ្ញុំទៅប្រទេសកម្ពុជា", "ខ្ញុំជាជនជាតិកម្ពុជា", "ខ្ញុំចូលចិត្តកម្ពុជា", "ខ្ញុំរស់នៅតួកគី"], answer: 1, exp: "Ben Kamboçyalıyım = ខ្ញុំជាជនជាតិកម្ពុជា" },
+      { q: "តើពាក្យណាជាការសួរសុខទុក្ខបែបផ្លូវការ ឬគួរសម?", trWord: "Nasılsınız?", options: ["Nasılsın?", "Nasılsınız?", "Selam", "Sağ ol"], answer: 1, exp: "Nasılsınız? ប្រើសម្រាប់ផ្លូវការ គួរសម ឬមនុស្សចាស់" },
+      { q: "តើ \"Mercimek çorbası\" ជាមុខម្ហូបអ្វី?", trWord: "Mercimek çorbası", options: ["សាច់អាំងកេបាប់", "នំបុ័ងដុត", "ស៊ុបសណ្តែកក្រហម", "បង្អែមបាក់ឡាវ៉ា"], answer: 2, exp: "Mercimek çorbası = ស៊ុបសណ្តែកក្រហមប្រពៃណីដ៏ល្បីប្រចាំតួកគី" },
+    ];
+
+    let currentQIndex = 0;
+    let quizScore = 0;
+    let answeredCount = 0;
+    let canAnswer = true;
+
+    function initQuiz() {
+      currentQIndex = 0;
+      quizScore = 0;
+      answeredCount = 0;
+      document.getElementById('quizScore').innerText = "0";
+      document.getElementById('quizTotalAnswered').innerText = "0";
+      loadQuestion(currentQIndex);
+    }
+
+    function loadQuestion(idx) {
+      canAnswer = true;
+      const q = quizPool[idx];
+      document.getElementById('quizQuestionNumber').innerText = `សំណួរទី ${idx + 1} នៃ ${quizPool.length}`;
+      document.getElementById('quizQuestionText').innerText = q.q;
+      document.getElementById('quizFeedback').className = 'hidden';
+      document.getElementById('quizNextBtn').classList.add('hidden');
+
+      const container = document.getElementById('quizOptionsContainer');
+      container.innerHTML = q.options.map((opt, oIdx) => `
+        <button onclick="handleQuizAnswer(${oIdx})" class="quiz-opt-btn text-left p-3 rounded-xl border border-slate-200 hover:border-red-500 hover:bg-red-50/40 text-sm font-medium transition flex items-center justify-between">
+          <span>${String.fromCharCode(65 + oIdx)}. ${opt}</span>
+          <span class="opt-indicator text-slate-300">○</span>
+        </button>
+      `).join('');
+    }
+
+    function speakQuizWord() {
+      const q = quizPool[currentQIndex];
+      speak(q.trWord);
+    }
+
+    function handleQuizAnswer(selectedIdx) {
+      if (!canAnswer) return;
+      canAnswer = false;
+
+      const q = quizPool[currentQIndex];
+      answeredCount++;
+      const isCorrect = selectedIdx === q.answer;
+      if (isCorrect) quizScore++;
+
+      document.getElementById('quizScore').innerText = quizScore;
+      document.getElementById('quizTotalAnswered').innerText = answeredCount;
+
+      const buttons = document.querySelectorAll('.quiz-opt-btn');
+      buttons.forEach((btn, idx) => {
+        if (idx === q.answer) {
+          btn.className = 'text-left p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 text-sm font-bold flex items-center justify-between';
+          btn.querySelector('.opt-indicator').innerHTML = '✅';
+        } else if (idx === selectedIdx) {
+          btn.className = 'text-left p-3 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-800 text-sm font-medium flex items-center justify-between';
+          btn.querySelector('.opt-indicator').innerHTML = '❌';
+        } else {
+          btn.className = 'text-left p-3 rounded-xl border border-slate-200 opacity-50 text-sm';
+        }
+      });
+
+      const feedback = document.getElementById('quizFeedback');
+      feedback.classList.remove('hidden');
+      if (isCorrect) {
+        feedback.className = 'p-3 rounded-lg text-xs font-semibold bg-emerald-100 text-emerald-900 border border-emerald-200';
+        feedback.innerHTML = `🎉 ត្រឹមត្រូវហើយ! ${q.exp}`;
+      } else {
+        feedback.className = 'p-3 rounded-lg text-xs font-semibold bg-rose-100 text-rose-900 border border-rose-200';
+        feedback.innerHTML = `💡 ចម្លើយត្រឹមត្រូវគឺ: <strong>${q.options[q.answer]}</strong> (${q.exp})`;
+      }
+
+      document.getElementById('quizNextBtn').classList.remove('hidden');
+    }
+
+    function loadNextQuestion() {
+      currentQIndex++;
+      if (currentQIndex < quizPool.length) {
+        loadQuestion(currentQIndex);
+      } else {
+        // Finished
+        document.getElementById('quizQuestionBox').innerHTML = `
+          <div class="text-center py-8 space-y-4">
+            <span class="text-5xl">🏆</span>
+            <h3 class="text-2xl font-bold text-slate-800">អ្នកបានបញ្ចប់ការធ្វើតេស្តរួចរាល់ហើយ!</h3>
+            <p class="text-base text-slate-600">ពិន្ទុរបស់អ្នកគឺ: <strong class="text-red-600 text-xl">${quizScore} / ${quizPool.length}</strong></p>
+            <button onclick="initQuiz()" class="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl shadow transition">
+              🔄 ធ្វើតេស្តម្តងទៀត
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    // --- INITIALIZE ON LOAD ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderAllGrids();
+      updateSimSentence();
+    });
+  </script>
+</body>
+</html>
