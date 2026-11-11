@@ -1,0 +1,4 @@
+# Turkish Language Study Book
+This folder contains Turkish study notes for Khmer speakers.
+- [Lesson 1: Greetings & Introductions](turkish_lesson_1.md)
+- [Lesson 2: Ordering Food & Drinks](turkish_lesson_2.md)
