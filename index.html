@@ -68,7 +68,7 @@
         </button>
         <button onclick="switchTab('tab-police')" id="btn-tab-police" class="tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5"><span>🚔</span> មេរៀនទី ៣៖ នគរបាល</button>
         <button onclick="switchTab('tab-dialogues')" id="btn-tab-dialogues" class="tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5">
-          <span>💬</span> កិច្ចសន្ទនាគំរូ (Dialogues)
+          <span>💬</span> សន្ទនាគំរូ មេរៀន ១–២
         </button>
         <button onclick="switchTab('tab-flashcards')" id="btn-tab-flashcards" class="tab-btn px-3 py-1.5 rounded-lg text-red-100 hover:bg-red-800/60 whitespace-nowrap flex items-center gap-1.5">
           <span>🎴</span> កាតពាក្យ Flashcards
@@ -87,7 +87,7 @@
     <div class="mb-6 bg-white p-3.5 rounded-xl shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center gap-3">
       <div class="relative w-full">
         <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">🔍</span>
-        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ស្វែងរកពាក្យ... ឧ. Merhaba, សួស្តី, Çay, កាហ្វេ, Hesap, គិតលុយ..." class="w-full pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ស្វែងរកពាក្យ... ឧ. Merhaba, Çay, Tavuk, kimlik, tanık..." class="w-full pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
       </div>
       <div class="text-xs text-slate-500 whitespace-nowrap">
         💡 ចុចប៊ូតុង <span class="bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-bold border border-red-200">🔊</span> ដើម្បីស្តាប់ការបញ្ចេញសំឡេង
@@ -657,9 +657,6 @@
 
         </div>
       </div>
-    </section>
-
-    <!-- ============================================================== -->
       <!-- Added food and flavor vocabulary -->
       <div class="mt-8">
         <h2 class="text-lg font-bold text-slate-800 border-b pb-2 mb-4 flex items-center gap-2"><span>🥗</span> គ្រឿងផ្សំ និងរសជាតិ (Ingredients & Flavors)</h2>
@@ -679,6 +676,9 @@
         </div>
         <p class="mt-4 text-sm text-slate-700"><strong>ឃ្លាប្រើប្រាស់៖</strong> Acı olmasın, lütfen. — សូមកុំឱ្យហឹរ។ · Su soğuk olsun, lütfen. — សូមយកទឹកត្រជាក់។ · Tavuk var mı? — មានសាច់មាន់ទេ?</p>
       </div>
+    </section>
+
+    <!-- ============================================================== -->
     <!-- PROFESSIONAL POLICE TURKISH -->
     <section id="tab-police" class="tab-content hidden space-y-8">
       <div class="bg-blue-50 border border-blue-200 rounded-xl p-4"><h2 class="font-bold text-blue-900 text-lg">🚔 មេរៀនទី ៣៖ ពាក្យ និងឃ្លាសម្រាប់ការងារនគរបាល</h2><p class="text-sm text-slate-700 mt-2">Professional Police Vocabulary &amp; Phrases — អនុវត្តតាមច្បាប់ គោលការណ៍ និងប្រើអ្នកបកប្រែដែលមានសមត្ថកិច្ចនៅកន្លែងធ្វើការ។ ការបញ្ចេញសំឡេងជាភាសាខ្មែរគ្រាន់តែជាជំនួយប្រហាក់ប្រហែល។</p></div>
@@ -879,8 +879,8 @@
     <section id="tab-flashcards" class="tab-content hidden">
       <div class="max-w-md mx-auto text-center space-y-6">
         <div>
-          <h2 class="text-lg font-bold text-slate-800">កាតពាក្យអនុវត្តផ្ទាល់ (Flashcards)</h2>
-          <p class="text-xs text-slate-500">ចុចលើផ្ទាំងកាតដើម្បីបកប្រែទៅមុខ ឬក្រោយ</p>
+          <h2 class="text-lg font-bold text-slate-800">កាតពាក្យមេរៀន ១–៣ (Flashcards)</h2>
+          <p class="text-xs text-slate-500">កាតពាក្យពីមេរៀនសួរសុខទុក្ខ ម្ហូបអាហារ និងនគរបាល · ចុចកាតដើម្បីបង្ហាញអត្ថន័យ</p>
         </div>
 
         <div class="perspective w-full h-64 cursor-pointer" onclick="flipCard()">
@@ -922,8 +922,8 @@
       <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <div class="flex justify-between items-center mb-4 pb-3 border-b">
           <div>
-            <h2 class="text-base font-bold text-slate-800">តេស្តវាស់កម្រិតយល់ដឹងរហ័ស (Quick Quiz)</h2>
-            <p class="text-xs text-slate-500">ជ្រើសរើសចម្លើយដែលត្រឹមត្រូវ</p>
+            <h2 class="text-base font-bold text-slate-800">តេស្តមេរៀន ១–៣ (Quick Quiz)</h2>
+            <p class="text-xs text-slate-500">សំណួរពីពាក្យសួរសុខទុក្ខ ម្ហូបអាហារ និងនគរបាល</p>
           </div>
           <div class="bg-red-50 text-red-700 px-3 py-1 rounded-lg text-xs font-bold border border-red-200">
             ពិន្ទុ: <span id="quizScore">0</span> / <span id="quizTotalAnswered">0</span>
@@ -951,7 +951,7 @@
   <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center border-t border-slate-800 mt-auto">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
       <div>🇹🇷 <strong>Turkish Live StudyBook</strong> | រៀបចំសម្រាប់អ្នកសិក្សាភាសាតួកគីជាភាសាខ្មែរ</div>
-      <div>ឯកសាររៀន៖ <span class="text-slate-300">d:\studybook\studybook1\index.html</span></div>
+      <div>ឯកសាររៀន៖ <span class="text-slate-300">D:\studybook2\index.html</span></div>
     </div>
   </footer>
 
@@ -993,16 +993,20 @@
     // Allow lesson links from the studybook homepage to open the matching lesson tab.
     function openTabFromHash() {
       const tabId = window.location.hash.slice(1);
-      if (tabId === 'tab-greetings' || tabId === 'tab-food') switchTab(tabId);
+      if (tabId === 'tab-greetings' || tabId === 'tab-food' || tabId === 'tab-police') switchTab(tabId);
     }
     window.addEventListener('hashchange', openTabFromHash);
     openTabFromHash();
 
     function handleSearch() {
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      let firstMatchTab = null;
       document.querySelectorAll('.vocab-card').forEach(card => {
-        card.classList.toggle('hidden', !card.innerText.toLowerCase().includes(q));
+        const matches = card.innerText.toLowerCase().includes(q);
+        card.classList.toggle('hidden', !matches);
+        if (q && matches && !firstMatchTab) firstMatchTab = card.closest('.tab-content');
       });
+      if (firstMatchTab) switchTab(firstMatchTab.id);
     }
 
     function updateSimSentence() {
@@ -1039,7 +1043,16 @@
       { tr: "Tuzlu", kmP: "ទុស-លូ", kmM: "ប្រៃ", en: "Salty", cat: "រសជាតិ" },
       { tr: "Soğuk", kmP: "សូ-អ៊ុក", kmM: "ត្រជាក់", en: "Cold", cat: "រសជាតិ" },
       { tr: "Sıcak", kmP: "ស៊ឹ-ចាក់", kmM: "ក្តៅ", en: "Hot", cat: "រសជាតិ" },
-      { tr: "Ve", kmP: "វេ", kmM: "និង", en: "And", cat: "ពាក្យទូទៅ" },      { tr: "Merhaba", kmP: "ម៉េរ-ហា-បា", kmM: "សួស្តី (ទូទៅ)", en: "Hello", cat: "សួរសុខទុក្ខ" },
+      { tr: "Ve", kmP: "វេ", kmM: "និង", en: "And", cat: "ពាក្យទូទៅ" },      { tr: "polis memuru", kmP: "ប៉ូ-លីស មេ-មូ-រូ", kmM: "មន្ត្រីនគរបាល", en: "Police officer", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "kimlik", kmP: "គីម-លិក", kmM: "អត្តសញ្ញាណប័ណ្ណ / អត្តសញ្ញាណ", en: "ID / identity", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "karakol", kmP: "កា-រ៉ា-កុល", kmM: "ប៉ុស្តិ៍នគរបាល", en: "Police station", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "tanık", kmP: "ថា-នឹក", kmM: "សាក្សី", en: "Witness", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "mağdur", kmP: "ម៉ា-ឌួរ", kmM: "ជនរងគ្រោះ", en: "Victim", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "şüpheli", kmP: "ស៊ូប-ហេ-លី", kmM: "ជនសង្ស័យ", en: "Suspect", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "delil", kmP: "ដេ-លីល", kmM: "ភស្តុតាង", en: "Evidence", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "Ne oldu?", kmP: "នេ អូល-ឌូ?", kmM: "តើមានអ្វីកើតឡើង?", en: "What happened?", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "Yaralı var mı?", kmP: "យ៉ា-រ៉ា-លឹ វ៉ារ មឹ?", kmM: "តើមានអ្នករងរបួសទេ?", en: "Is anyone injured?", cat: "មេរៀន ៣ · នគរបាល" },
+      { tr: "Lütfen sakin olun.", kmP: "លុត-ហ្វេន សា-គីន អូ-លូន", kmM: "សូមរក្សាភាពស្ងប់ស្ងាត់។", en: "Please stay calm.", cat: "មេរៀន ៣ · នគរបាល" },      { tr: "Merhaba", kmP: "ម៉េរ-ហា-បា", kmM: "សួស្តី (ទូទៅ)", en: "Hello", cat: "សួរសុខទុក្ខ" },
       { tr: "Günaydın", kmP: "ហ្គឺន-អាយ-ដឹន", kmM: "អរុណសួស្តី", en: "Good morning", cat: "សួរសុខទុក្ខ" },
       { tr: "Nasılsın?", kmP: "ណាស្ស-អ៊ិល-ស៊ិន?", kmM: "តើអ្នកសុខសប្បាយទេ?", en: "How are you?", cat: "សួរសុខទុក្ខ" },
       { tr: "İyiyim, teşekkürler", kmP: "អ៊ី-យី-យីម, ថេសេកគឺរលើរ", kmM: "ខ្ញុំសុខសប្បាយទេ អរគុណ", en: "I am fine, thanks", cat: "ឆ្លើយតប" },
@@ -1078,7 +1091,13 @@
       { tr: "Bugün", km: "ថ្ងៃនេះ" }, { tr: "Yarın", km: "ថ្ងៃស្អែក" }, { tr: "Arkadaş", km: "មិត្តភក្តិ" }, { tr: "Aile", km: "គ្រួសារ" },
       { tr: "Tavuk", km: "សាច់មាន់" }, { tr: "Balık", km: "ត្រី" }, { tr: "Et", km: "សាច់" }, { tr: "Sebze", km: "បន្លែ" },
       { tr: "Peynir", km: "ឈីស" }, { tr: "Yumurta", km: "ស៊ុត" }, { tr: "Acı", km: "ហឹរ" }, { tr: "Tatlı", km: "ផ្អែម" },
-      { tr: "Tuzlu", km: "ប្រៃ" }, { tr: "Soğuk", km: "ត្រជាក់" }, { tr: "Sıcak", km: "ក្តៅ" }, { tr: "Ve", km: "និង" }
+      { tr: "Tuzlu", km: "ប្រៃ" }, { tr: "Soğuk", km: "ត្រជាក់" }, { tr: "Sıcak", km: "ក្តៅ" },       { tr: "Ve", km: "និង" },
+      { tr: "polis", km: "ប៉ូលិស / នគរបាល" }, { tr: "polis memuru", km: "មន្ត្រីនគរបាល" },
+      { tr: "karakol", km: "ប៉ុស្តិ៍នគរបាល" }, { tr: "kimlik", km: "អត្តសញ្ញាណប័ណ្ណ / អត្តសញ្ញាណ" },
+      { tr: "tanık", km: "សាក្សី" }, { tr: "mağdur", km: "ជនរងគ្រោះ" }, { tr: "şüpheli", km: "ជនសង្ស័យ" },
+      { tr: "delil", km: "ភស្តុតាង" }, { tr: "Ne oldu?", km: "តើមានអ្វីកើតឡើង?" },
+      { tr: "Yaralı var mı?", km: "តើមានអ្នករងរបួសទេ?" }, { tr: "Tercüman gerekiyor mu?", km: "តើត្រូវការអ្នកបកប្រែទេ?" },
+      { tr: "Lütfen sakin olun.", km: "សូមរក្សាភាពស្ងប់ស្ងាត់។" }
     ];
     const addedVocabQuiz = addedVocab.map((item, index) => {
       const distractors = addedVocab.filter((word) => word.km !== item.km)
