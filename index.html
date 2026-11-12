@@ -986,13 +986,31 @@
     function prevCard() { fcIdx = (fcIdx - 1 + fcList.length) % fcList.length; showCurrentFlashcard(); }
     function speakCurrentCard() { speak(fcList[fcIdx].tr); }
 
+    const addedVocab = [
+      { tr: "Nerede yaşıyorsun?", km: "តើអ្នករស់នៅឯណា?" }, { tr: "Kaç yaşındasın?", km: "តើអ្នកអាយុប៉ុន្មាន?" },
+      { tr: "Öğrenciyim.", km: "ខ្ញុំជាសិស្ស/និស្សិត" }, { tr: "Öğretmenim.", km: "ខ្ញុំជាគ្រូបង្រៀន" },
+      { tr: "Doktorum.", km: "ខ្ញុំជាវេជ្ជបណ្ឌិត" }, { tr: "Memnun oldum.", km: "រីករាយដែលបានស្គាល់" },
+      { tr: "Bugün", km: "ថ្ងៃនេះ" }, { tr: "Yarın", km: "ថ្ងៃស្អែក" }, { tr: "Arkadaş", km: "មិត្តភក្តិ" }, { tr: "Aile", km: "គ្រួសារ" },
+      { tr: "Tavuk", km: "សាច់មាន់" }, { tr: "Balık", km: "ត្រី" }, { tr: "Et", km: "សាច់" }, { tr: "Sebze", km: "បន្លែ" },
+      { tr: "Peynir", km: "ឈីស" }, { tr: "Yumurta", km: "ស៊ុត" }, { tr: "Acı", km: "ហឹរ" }, { tr: "Tatlı", km: "ផ្អែម" },
+      { tr: "Tuzlu", km: "ប្រៃ" }, { tr: "Soğuk", km: "ត្រជាក់" }, { tr: "Sıcak", km: "ក្តៅ" }, { tr: "Ve", km: "និង" }
+    ];
+    const addedVocabQuiz = addedVocab.map((item, index) => {
+      const distractors = addedVocab.filter((word) => word.km !== item.km)
+        .slice(index % (addedVocab.length - 3), index % (addedVocab.length - 3) + 3).map((word) => word.km);
+      const answerIndex = index % 4;
+      const opts = [...distractors];
+      opts.splice(answerIndex, 0, item.km);
+      return { q: `តើពាក្យ "${item.tr}" មានន័យដូចម្តេច?`, tr: item.tr, opts, a: answerIndex, exp: `${item.tr} = ${item.km}` };
+    });
     // Quiz
     const quizList = [
       { q: "តើពាក្យ \"Günaydın\" មានន័យដូចម្តេច?", tr: "Günaydın", opts: ["អរុណសួស្តី", "រាត្រីសួស្តី", "សួស្តីពេលល្ងាច", "លាហើយ"], a: 0, exp: "Günaydın = អរុណសួស្តី (Good morning)" },
       { q: "តើឃ្លាណាមានន័យថា \"សូមអរគុណ\"?", tr: "Teşekkür ederim", opts: ["Lütfen", "Teşekkür ederim", "Afedersiniz", "Merhaba"], a: 1, exp: "Teşekkür ederim = អរគុណច្រើន" },
       { q: "តើ \"Hesap, lütfen\" ប្រើសម្រាប់អ្វី?", tr: "Hesap, lütfen", opts: ["សុំមើលម៉ឺនុយ", "សុំទោស", "សុំគិតលុយនៅហាង", "សួរសុខទុក្ខ"], a: 2, exp: "Hesap, lütfen = សុំគិតលុយ (The bill, please)" },
       { q: "តើ \"Çay\" មានន័យថាអ្វី?", tr: "Çay", opts: ["កាហ្វេ", "តែតួកគី", "ទឹកសុទ្ធ", "បាយ"], a: 1, exp: "Çay = តែតួកគី (Turkish tea)" },
-      { q: "តើឃ្លា \"Ben Kamboçyalıyım\" មានន័យដូចម្តេច?", tr: "Ben Kamboçyalıyım", opts: ["ខ្ញុំទៅកម្ពុជា", "ខ្ញុំជាជនជាតិកម្ពុជា", "ខ្ញុំចូលចិត្តកម្ពុជា", "ខ្ញុំនៅតួកគី"], a: 1, exp: "Ben Kamboçyalıyım = ខ្ញុំជាជនជាតិកម្ពុជា" }
+      { q: "តើឃ្លា \"Ben Kamboçyalıyım\" មានន័យដូចម្តេច?", tr: "Ben Kamboçyalıyım", opts: ["ខ្ញុំទៅកម្ពុជា", "ខ្ញុំជាជនជាតិកម្ពុជា", "ខ្ញុំចូលចិត្តកម្ពុជា", "ខ្ញុំនៅតួកគី"], a: 1, exp: "Ben Kamboçyalıyım = ខ្ញុំជាជនជាតិកម្ពុជា" },
+      ...addedVocabQuiz
     ];
     let qIdx = 0, score = 0, answered = 0, canAns = true;
     function initQuiz() {
