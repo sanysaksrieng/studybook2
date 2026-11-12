@@ -870,6 +870,14 @@
       if (tabId === 'tab-quiz') initQuiz();
     }
 
+    // Allow lesson links from the studybook homepage to open the matching lesson tab.
+    function openTabFromHash() {
+      const tabId = window.location.hash.slice(1);
+      if (tabId === 'tab-greetings' || tabId === 'tab-food') switchTab(tabId);
+    }
+    window.addEventListener('hashchange', openTabFromHash);
+    openTabFromHash();
+
     function handleSearch() {
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
       document.querySelectorAll('.vocab-card').forEach(card => {
