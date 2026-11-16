@@ -1,5 +1,5 @@
-# មេរៀនទី ៣៖ ពាក្យ និងឃ្លាភាសាតួកគីសម្រាប់ការងារនគរបាល
-# (Lesson 3: Professional Police Vocabulary & Phrases - Profesyonel Polis Kelimeleri ve İfadeleri)
+# មេរៀនទី ៣៖ ពាក្យ និងឃ្លាភាសាតួកគីសម្រាប់ការងារនគរបាល និងច្បាប់
+# (Lesson 3: Police & Legal Vocabulary and Phrases - Polis ve Hukuk Kelimeleri ve İfadeleri)
 
 > មេរៀននេះផ្តោតលើការសន្ទនាប្រកបដោយវិជ្ជាជីវៈ ការស្តាប់ និងការប្រមូលព័ត៌មានដំបូង។ ការបញ្ចេញសំឡេងជាភាសាខ្មែរគ្រាន់តែជាជំនួយប្រហាក់ប្រហែល។ សូមអនុវត្តតាមច្បាប់ គោលការណ៍ និងអ្នកបកប្រែដែលមានសមត្ថកិច្ចនៅកន្លែងធ្វើការ។
 
@@ -115,32 +115,41 @@
 
 ## 💬 ៧. កិច្ចសន្ទនាគំរូ (Sample Dialogue)
 
-**មន្ត្រី**: Merhaba, ben polis memuruyum. Size nasıl yardımcı olabilirim?  
+**មន្ត្រី**: Merhaba, ben polis memuruyum. Size nasıl yardımcı olabilirim?<br>
 *(សួស្តី ខ្ញុំជាមន្ត្រីនគរបាល។ តើខ្ញុំអាចជួយលោក/អ្នកយ៉ាងដូចម្តេច?)*
 
-**អ្នករាយការណ៍**: Cüzdanımı kaybettim.  
-*(ខ្ញុំបានបាត់កាបូបលុយ។)*
+**អ្នករាយការណ៍**: Cüzdanım çalındı.<br>
+*(កាបូបលុយរបស់ខ្ញុំត្រូវបានលួច។)*
 
-**មន្ត្រី**: Ne zaman ve nerede kaybettiniz?  
-*(លោក/អ្នកបានបាត់វានៅពេលណា និងនៅឯណា?)*
+**មន្ត្រី**: Ne zaman ve nerede oldu?<br>
+*(តើហេតុការណ៍នេះកើតឡើងនៅពេលណា និងនៅឯណា?)*
 
-**អ្នករាយការណ៍**: Bu sabah, otobüs durağında.  
+**អ្នករាយការណ៍**: Bu sabah, otobüs durağında.<br>
 *(ព្រឹកនេះ នៅចំណតឡានក្រុង។)*
 
-**មន្ត្រី**: Anladım. Lütfen adınızı ve telefon numaranızı söyler misiniz?  
-*(ខ្ញុំយល់ហើយ។ សូមប្រាប់ឈ្មោះ និងលេខទូរស័ព្ទរបស់លោក/អ្នកបានទេ?)*
+**មន្ត្រី**: Olayı gören bir tanık var mı?<br>
+*(តើមានសាក្សីណាបានឃើញហេតុការណ៍នេះទេ?)*
 
-**អ្នករាយការណ៍**: Tabii.  
-*(បាន / ប្រាកដណាស់។)*
+**អ្នករាយការណ៍**: Evet, bir tanık var. Kamera kaydı da olabilir.<br>
+*(មាន សាក្សីម្នាក់។ ក៏អាចមានវីដេអូថតពីកាមេរ៉ាផងដែរ។)*
+
+**មន្ត្រី**: Teşekkür ederim. Şikâyetinizi ve ifadenizi tutanağa geçireceğim.<br>
+*(សូមអរគុណ។ ខ្ញុំនឹងកត់ត្រាពាក្យបណ្តឹង និងចម្លើយបំភ្លឺរបស់លោក/អ្នកក្នុងកំណត់ហេតុផ្លូវការ។)*
+
+**អ្នករាយការណ៍**: Teşekkür ederim.<br>
+*(សូមអរគុណ។)*
 
 ### ពាក្យក្នុងកិច្ចសន្ទនា
 
 - **cüzdan** (ជូស-ដាន) = កាបូបលុយ (wallet)
-- **kaybettim** (កៃ-បេត-ទីម) = ខ្ញុំបានបាត់ (I lost)
+- **çalındı** (ឆា-លឹន-ឌឹ) = ត្រូវបានលួច (was stolen)
 - **bu sabah** (ប៊ូ សា-បាហ៍) = ព្រឹកនេះ (this morning)
 - **otobüs durağı** (អូ-ថូ-ប៊ូស ឌូ-រ៉ា-អឹ) = ចំណតឡានក្រុង (bus stop)
-- **söyler misiniz?** (សឺយ-ឡែរ មី-ស៊ី-នីស?) = តើអាចប្រាប់បានទេ? (Could you tell me?)
-- **tabii** (ថា-ប៊ី) = បាន / ប្រាកដណាស់ (of course)
+- **tanık** (ថា-នឹក) = សាក្សី (witness)
+- **kamera kaydı** (កា-ម៉េ-រ៉ា កៃ-ឌឹ) = វីដេអូថតពីកាមេរ៉ា (camera footage)
+- **şikâyet** (ស៊ី-កា-យ៉េត) = ពាក្យបណ្តឹង (complaint)
+- **ifade** (អ៊ី-ហ្វា-ដេ) = ចម្លើយបំភ្លឺ (statement)
+- **tutanağa geçirmek** (ទូ-ថា-ណា-អា ហ្គេ-ឆីរ-ម៉េក) = កត់ត្រាក្នុងកំណត់ហេតុផ្លូវការ (to enter in an official record)
 
 ---
 
@@ -271,7 +280,7 @@
 | 87 | **Delil** | ភស្តុតាង | evidence |
 | 88 | **Kanıt** | ភស្តុតាង | proof / evidence |
 | 89 | **İfade** | ចម្លើយបំភ្លឺ | statement |
-| 90 | **İfade almak** | ការស្តាប់ចម្លើយបំភ្លឺ | to take a statement |
+| 90 | **İfade almak** | ការយកចម្លើយបំភ្លឺ | to take a statement |
 | 91 | **Tutanak** | កំណត់ហេតុផ្លូវការ | official report / minutes |
 | 92 | **Olay yeri** | កន្លែងកើតហេតុ | crime scene |
 | 93 | **İhbar** | ការរាយការណ៍អំពីហេតុការណ៍ | notification / tip-off |
