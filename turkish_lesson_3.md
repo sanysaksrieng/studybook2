@@ -151,3 +151,143 @@
 - **Tercüman gerekiyor mu?** — ត្រូវការអ្នកបកប្រែទេ?
 - **Yaralı var mı?** — មានអ្នករងរបួសទេ?
 - លេខទូទៅសម្រាប់ស្ថានការណ៍បន្ទាន់នៅទួរគីគឺ **112**។ ប្រើតាមនីតិវិធីក្នុងតំបន់ និងហៅតែក្នុងករណីបន្ទាន់ប៉ុណ្ណោះ។
+
+---
+
+## ⚖️ ៩. វចនានុក្រមច្បាប់តួកគី–ខ្មែរ (Türkçe–Khmer Hukuk Sözlüğü)
+
+ផ្នែកនេះបន្ថែមពាក្យច្បាប់ទូទៅ និងពាក្យសំខាន់ៗសម្រាប់ការងារនគរបាល និងប្រព័ន្ធយុត្តិធម៌។ រៀន ២០ ពាក្យក្នុងមួយថ្ងៃ ហើយសាកបង្កើតប្រយោគក្នុងចិត្តជាភាសាតួកគី។
+
+### ៩.១ ច្បាប់ និងប្រព័ន្ធរដ្ឋ (Hukuk ve Devlet Sistemi)
+
+| ល.រ | ភាសាតួកគី | អត្ថន័យជាភាសាខ្មែរ | English |
+| :---: | :--- | :--- | :--- |
+| 1 | **Hukuk** | ច្បាប់ | law |
+| 2 | **Kanun** | ច្បាប់ | statute / law |
+| 3 | **Anayasa** | រដ្ឋធម្មនុញ្ញ | constitution |
+| 4 | **Devlet** | រដ្ឋ | state |
+| 5 | **Hükümet** | រដ្ឋាភិបាល | government |
+| 6 | **Meclis** | សភា | assembly |
+| 7 | **Parlamento** | សភា | parliament |
+| 8 | **Yasa** | ច្បាប់ | law |
+| 9 | **Yönetmelik** | បទបញ្ជា | regulation |
+| 10 | **Tüzük** | លក្ខន្តិកៈ | statute / bylaw |
+| 11 | **Kararname** | អនុក្រឹត្យ | decree |
+| 12 | **Yönetim** | ការគ្រប់គ្រង | administration |
+| 13 | **Kamu** | សាធារណៈ | public |
+| 14 | **Kamu düzeni** | សណ្តាប់ធ្នាប់សាធារណៈ | public order |
+| 15 | **Güvenlik** | សន្តិសុខ | security |
+| 16 | **Kamu güvenliği** | សន្តិសុខសាធារណៈ | public safety |
+| 17 | **Adalet** | យុត្តិធម៌ | justice |
+| 18 | **Hukuk devleti** | នីតិរដ្ឋ | rule of law |
+| 19 | **Demokrasi** | ប្រជាធិបតេយ្យ | democracy |
+| 20 | **Egemenlik** | អធិបតេយ្យភាព | sovereignty |
+
+### ៩.២ សិទ្ធិ និងកាតព្វកិច្ច (Haklar ve Yükümlülükler)
+
+| ល.រ | ភាសាតួកគី | អត្ថន័យជាភាសាខ្មែរ | English |
+| :---: | :--- | :--- | :--- |
+| 21 | **Hak** | សិទ្ធិ | right |
+| 22 | **İnsan hakları** | សិទ្ធិមនុស្ស | human rights |
+| 23 | **Özgürlük** | សេរីភាព | freedom |
+| 24 | **Eşitlik** | សមភាព | equality |
+| 25 | **Sorumluluk** | ការទទួលខុសត្រូវ | responsibility |
+| 26 | **Yükümlülük** | កាតព្វកិច្ច | obligation |
+| 27 | **Görev** | ភារកិច្ច | duty |
+| 28 | **Yetki** | សមត្ថកិច្ច / អំណាច | authority / jurisdiction |
+| 29 | **İzin** | ការអនុញ្ញាត | permission |
+| 30 | **Yasak** | ការហាមឃាត់ | prohibition |
+| 31 | **Vatandaş** | ប្រជាពលរដ្ឋ | citizen |
+| 32 | **Vatandaşlık** | សញ្ជាតិ | citizenship |
+| 33 | **Kişi** | បុគ្គល | person |
+| 34 | **Kişisel haklar** | សិទ្ធិបុគ្គល | personal rights |
+| 35 | **Özel hayat** | ជីវិតឯកជន | private life |
+| 36 | **Mahremiyet** | ភាពឯកជន | privacy |
+| 37 | **İfade özgürlüğü** | សេរីភាពបញ្ចេញមតិ | freedom of expression |
+| 38 | **Savunma hakkı** | សិទ្ធិការពារខ្លួន | right to defense |
+| 39 | **Mülkiyet hakkı** | សិទ្ធិកម្មសិទ្ធិ | property right |
+| 40 | **Adil yargılanma hakkı** | សិទ្ធិទទួលបានការជំនុំជម្រះដោយយុត្តិធម៌ | right to a fair trial |
+
+### ៩.៣ បទល្មើស និងទោស (Suçlar ve Cezalar)
+
+| ល.រ | ភាសាតួកគី | អត្ថន័យជាភាសាខ្មែរ | English |
+| :---: | :--- | :--- | :--- |
+| 41 | **Suç** | បទល្មើស | crime / offense |
+| 42 | **Suçlu** | ជនល្មើស | offender |
+| 43 | **Suç işlemek** | ប្រព្រឹត្តបទល្មើស | to commit a crime |
+| 44 | **Ceza** | ទោស | penalty |
+| 45 | **Ceza hukuku** | ច្បាប់ព្រហ្មទណ្ឌ | criminal law |
+| 46 | **Ceza kanunu** | ក្រមព្រហ្មទណ្ឌ | criminal code |
+| 47 | **Hapis cezası** | ទោសដាក់ពន្ធនាគារ | imprisonment |
+| 48 | **Para cezası** | ទោសពិន័យជាប្រាក់ | fine |
+| 49 | **Ağır suç** | បទល្មើសធ្ងន់ | serious crime |
+| 50 | **Hafif suç** | បទល្មើសស្រាល | minor offense |
+| 51 | **Cinayet** | ឃាតកម្ម | murder |
+| 52 | **Hırsızlık** | អំពើលួច | theft |
+| 53 | **Gasp** | អំពើប្លន់ | robbery |
+| 54 | **Dolandırıcılık** | អំពើឆបោក | fraud |
+| 55 | **Kaçakçılık** | ការរត់ពន្ធ | smuggling |
+| 56 | **Rüşvet** | សំណូក | bribe |
+| 57 | **Yolsuzluk** | អំពើពុករលួយ | corruption |
+| 58 | **Şiddet** | អំពើហិង្សា | violence |
+| 59 | **Tehdit** | ការគំរាមកំហែង | threat |
+| 60 | **Hakaret** | ការប្រមាថ | insult |
+
+### ៩.៤ បុគ្គលក្នុងនីតិវិធីព្រហ្មទណ្ឌ (Ceza Yargılamasındaki Kişiler)
+
+| ល.រ | ភាសាតួកគី | អត្ថន័យជាភាសាខ្មែរ | English |
+| :---: | :--- | :--- | :--- |
+| 61 | **Şüpheli** | ជនសង្ស័យ | suspect |
+| 62 | **Sanık** | ជនជាប់ចោទ | defendant (criminal case) |
+| 63 | **Hükümlü** | ទណ្ឌិត | convicted person |
+| 64 | **Tutuklu** | ជនត្រូវឃុំខ្លួនបណ្តោះអាសន្ន | person in pretrial detention |
+| 65 | **Mağdur** | ជនរងគ្រោះ | victim |
+| 66 | **Suçlu** | ជនល្មើស | offender |
+| 67 | **Fail** | អ្នកប្រព្រឹត្តបទល្មើស | perpetrator |
+| 68 | **Tanık** | សាក្សី | witness |
+| 69 | **Şahit** | សាក្សី | witness |
+| 70 | **Avukat** | មេធាវី | lawyer |
+| 71 | **Hâkim** | ចៅក្រម | judge |
+| 72 | **Savcı** | ព្រះរាជអាជ្ញា | prosecutor |
+| 73 | **Polis memuru** | មន្ត្រីនគរបាល | police officer |
+| 74 | **Polis** | នគរបាល | police |
+| 75 | **Memur** | មន្ត្រី | official |
+| 76 | **Uzman** | អ្នកជំនាញ | specialist |
+| 77 | **Bilirkişi** | អ្នកជំនាញផ្តល់យោបល់ក្នុងសំណុំរឿង | court-appointed expert |
+| 78 | **Müşteki** | ដើមបណ្តឹងព្រហ្មទណ្ឌ | complainant |
+| 79 | **Davacı** | ដើមបណ្តឹង | plaintiff |
+| 80 | **Davalı** | ចុងចម្លើយ | defendant (civil case) |
+
+### ៩.៥ នីតិវិធី និងភស្តុតាង (Usul ve Deliller)
+
+| ល.រ | ភាសាតួកគី | អត្ថន័យជាភាសាខ្មែរ | English |
+| :---: | :--- | :--- | :--- |
+| 81 | **Soruşturma** | ការស៊ើបសួរ | investigation |
+| 82 | **Kovuşturma** | នីតិវិធីជំនុំជម្រះ | prosecution / trial phase |
+| 83 | **Dava** | សំណុំរឿង / បណ្តឹង | case / lawsuit |
+| 84 | **Mahkeme** | តុលាការ | court |
+| 85 | **Duruşma** | សវនាការ | hearing / trial |
+| 86 | **Karar** | សេចក្តីសម្រេច | decision |
+| 87 | **Delil** | ភស្តុតាង | evidence |
+| 88 | **Kanıt** | ភស្តុតាង | proof / evidence |
+| 89 | **İfade** | ចម្លើយបំភ្លឺ | statement |
+| 90 | **İfade almak** | ការស្តាប់ចម្លើយបំភ្លឺ | to take a statement |
+| 91 | **Tutanak** | កំណត់ហេតុផ្លូវការ | official report / minutes |
+| 92 | **Olay yeri** | កន្លែងកើតហេតុ | crime scene |
+| 93 | **İhbar** | ការរាយការណ៍អំពីហេតុការណ៍ | notification / tip-off |
+| 94 | **Şikâyet** | ពាក្យបណ្តឹង | complaint |
+| 95 | **Gözaltı** | ការឃាត់ខ្លួន | police custody |
+| 96 | **Yakalama** | ការចាប់ខ្លួន | apprehension / arrest |
+| 97 | **Tutuklama** | ការឃុំខ្លួនបណ្តោះអាសន្ន | pretrial detention |
+| 98 | **Arama** | ការឆែកឆេរ | search |
+| 99 | **El koyma** | ការរឹបអូស | seizure |
+| 100 | **Sorgulama** | ការសាកសួរ | interrogation |
+
+### ឧទាហរណ៍សម្រាប់រំលឹក
+
+- **Şüpheli yakalandı.** = ជនសង្ស័យត្រូវបានចាប់ខ្លួន។
+- **Olay yeri incelendi.** = កន្លែងកើតហេតុត្រូវបានពិនិត្យ។
+- **Deliller toplandı.** = ភស្តុតាងត្រូវបានប្រមូល។
+- **Tanığın ifadesi alındı.** = ចម្លើយបំភ្លឺរបស់សាក្សីត្រូវបានស្តាប់។
+
+**ចំណាំ៖** ពាក្យច្បាប់ខ្លះមានន័យខុសគ្នាតាមបរិបទ និងនីតិវិធី។ តារាងនេះជាជំនួយសម្រាប់រៀនភាសា មិនមែនជាការបកស្រាយផ្លូវច្បាប់ទេ។
